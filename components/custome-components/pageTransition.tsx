@@ -4,9 +4,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useState, useEffect } from "react";
 
-// -------------------------------
-// ⭐ Blur Trigger (React–safe)
-// -------------------------------
 function useBlurTrigger(pathname: string) {
   const [blur, setBlur] = useState(false);
 
@@ -21,9 +18,7 @@ function useBlurTrigger(pathname: string) {
   return blur;
 }
 
-// -------------------------------
-// ⭐ Page Animations
-// -------------------------------
+
 const pageVariants: Variants = {
   initial: {
     opacity: 0,
@@ -57,9 +52,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
   return (
     <div className="relative w-full h-full overflow-hidden">
 
-      {/* -------------------------------
-          🔥 Blur Overlay
-      -------------------------------- */}
+    
       <AnimatePresence>
         {blur && (
           <motion.div
@@ -73,9 +66,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         )}
       </AnimatePresence>
 
-      {/* -------------------------------
-          🔥 Page Transition
-      -------------------------------- */}
+    
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={pathname}
